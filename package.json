@@ -1,0 +1,302 @@
+{
+  "name": "ng-generate",
+  "displayName": "ng Generate",
+  "description": "Run Angular CLI generate commands from folder context menu",
+  "repository": "https://github.com/danisss9/ng-generate-vscode",
+  "publisher": "danisss9",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.107.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ng-generate.component",
+        "title": "Component"
+      },
+      {
+        "command": "ng-generate.service",
+        "title": "Service"
+      },
+      {
+        "command": "ng-generate.module",
+        "title": "Module"
+      },
+      {
+        "command": "ng-generate.directive",
+        "title": "Directive"
+      },
+      {
+        "command": "ng-generate.pipe",
+        "title": "Pipe"
+      },
+      {
+        "command": "ng-generate.guard",
+        "title": "Guard"
+      },
+      {
+        "command": "ng-generate.interceptor",
+        "title": "Interceptor"
+      },
+      {
+        "command": "ng-generate.class",
+        "title": "Class"
+      },
+      {
+        "command": "ng-generate.interface",
+        "title": "Interface"
+      },
+      {
+        "command": "ng-generate.enum",
+        "title": "Enum"
+      },
+      {
+        "command": "ng-generate.resolver",
+        "title": "Resolver"
+      }
+    ],
+    "submenus": [
+      {
+        "id": "ng-generate.submenu",
+        "label": "ng Generate"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "explorerResourceIsFolder",
+          "submenu": "ng-generate.submenu",
+          "group": "navigation"
+        }
+      ],
+      "ng-generate.submenu": [
+        {
+          "command": "ng-generate.component",
+          "group": "1_common@1"
+        },
+        {
+          "command": "ng-generate.service",
+          "group": "1_common@2"
+        },
+        {
+          "command": "ng-generate.module",
+          "group": "1_common@3"
+        },
+        {
+          "command": "ng-generate.directive",
+          "group": "2_structural@1"
+        },
+        {
+          "command": "ng-generate.pipe",
+          "group": "2_structural@2"
+        },
+        {
+          "command": "ng-generate.guard",
+          "group": "3_routing@1"
+        },
+        {
+          "command": "ng-generate.interceptor",
+          "group": "3_routing@2"
+        },
+        {
+          "command": "ng-generate.resolver",
+          "group": "3_routing@3"
+        },
+        {
+          "command": "ng-generate.class",
+          "group": "4_types@1"
+        },
+        {
+          "command": "ng-generate.interface",
+          "group": "4_types@2"
+        },
+        {
+          "command": "ng-generate.enum",
+          "group": "4_types@3"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "ng Generate",
+      "properties": {
+        "ngGenerate.component.standalone": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether generated components should be standalone"
+        },
+        "ngGenerate.component.skipTests": {
+          "type": "boolean",
+          "default": false,
+          "description": "Skip creating spec.ts test files for components"
+        },
+        "ngGenerate.component.inlineStyle": {
+          "type": "boolean",
+          "default": false,
+          "description": "Include styles inline in the component.ts file"
+        },
+        "ngGenerate.component.inlineTemplate": {
+          "type": "boolean",
+          "default": false,
+          "description": "Include template inline in the component.ts file"
+        },
+        "ngGenerate.component.style": {
+          "type": "string",
+          "default": "css",
+          "enum": [
+            "css",
+            "scss",
+            "sass",
+            "less",
+            "none"
+          ],
+          "description": "The file extension or preprocessor to use for style files"
+        },
+        "ngGenerate.component.changeDetection": {
+          "type": "string",
+          "default": "Default",
+          "enum": [
+            "Default",
+            "OnPush"
+          ],
+          "description": "The change detection strategy to use in the new component"
+        },
+        "ngGenerate.component.flat": {
+          "type": "boolean",
+          "default": false,
+          "description": "Create the new files at the top level of the current folder"
+        },
+        "ngGenerate.service.skipTests": {
+          "type": "boolean",
+          "default": false,
+          "description": "Skip creating spec.ts test files for services"
+        },
+        "ngGenerate.service.flat": {
+          "type": "boolean",
+          "default": true,
+          "description": "Create files at the top level of the current folder"
+        },
+        "ngGenerate.module.flat": {
+          "type": "boolean",
+          "default": false,
+          "description": "Create the new files at the top level of the current folder"
+        },
+        "ngGenerate.module.routing": {
+          "type": "boolean",
+          "default": false,
+          "description": "Create a routing module"
+        },
+        "ngGenerate.directive.standalone": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether generated directives should be standalone"
+        },
+        "ngGenerate.directive.skipTests": {
+          "type": "boolean",
+          "default": false,
+          "description": "Skip creating spec.ts test files for directives"
+        },
+        "ngGenerate.directive.flat": {
+          "type": "boolean",
+          "default": true,
+          "description": "Create files at the top level of the current folder"
+        },
+        "ngGenerate.pipe.standalone": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether generated pipes should be standalone"
+        },
+        "ngGenerate.pipe.skipTests": {
+          "type": "boolean",
+          "default": false,
+          "description": "Skip creating spec.ts test files for pipes"
+        },
+        "ngGenerate.pipe.flat": {
+          "type": "boolean",
+          "default": true,
+          "description": "Create files at the top level of the current folder"
+        },
+        "ngGenerate.guard.functional": {
+          "type": "boolean",
+          "default": true,
+          "description": "Specifies whether to generate a guard as a function"
+        },
+        "ngGenerate.guard.skipTests": {
+          "type": "boolean",
+          "default": false,
+          "description": "Skip creating spec.ts test files for guards"
+        },
+        "ngGenerate.guard.flat": {
+          "type": "boolean",
+          "default": true,
+          "description": "Create files at the top level of the current folder"
+        },
+        "ngGenerate.interceptor.functional": {
+          "type": "boolean",
+          "default": true,
+          "description": "Creates the interceptor as a HttpInterceptorFn"
+        },
+        "ngGenerate.interceptor.skipTests": {
+          "type": "boolean",
+          "default": false,
+          "description": "Skip creating spec.ts test files for interceptors"
+        },
+        "ngGenerate.interceptor.flat": {
+          "type": "boolean",
+          "default": true,
+          "description": "Create files at the top level of the current folder"
+        },
+        "ngGenerate.class.skipTests": {
+          "type": "boolean",
+          "default": false,
+          "description": "Skip creating spec.ts test files for classes"
+        },
+        "ngGenerate.resolver.functional": {
+          "type": "boolean",
+          "default": true,
+          "description": "Creates the resolver as a ResolveFn"
+        },
+        "ngGenerate.resolver.skipTests": {
+          "type": "boolean",
+          "default": false,
+          "description": "Skip creating spec.ts test files for resolvers"
+        },
+        "ngGenerate.resolver.flat": {
+          "type": "boolean",
+          "default": true,
+          "description": "Create files at the top level of the current folder"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.107.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.48.1",
+    "eslint": "^9.39.1",
+    "esbuild": "^0.27.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.9.3",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
